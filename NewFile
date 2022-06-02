@@ -1,0 +1,117 @@
+
+
+public class InstrumentTest {
+	public static void main(String[] args) {
+//		MusicalInstrument mi = new MusicalInstrument();
+//		StringBasedMusicalInstrument  sbmi = new StringBasedMusicalInstrument();
+		Guitar g = new Guitar();
+		g.play();
+		g.tuneStrings();
+		g.pluck();
+		
+	}
+}
+interface Instrument
+{
+	void uses();
+}
+abstract class MusicalInstrument implements Instrument
+{
+	abstract void play();
+}
+abstract class StringBasedMusicalInstrument extends MusicalInstrument
+{
+	abstract void tuneStrings();
+}
+abstract class AirBasedMusicalInstrument extends MusicalInstrument
+{
+	abstract void checkAir();
+}
+abstract class DrumBasedMusicalInstrument extends MusicalInstrument
+{
+	abstract void checkDrumPatter();
+}
+class Guitar extends StringBasedMusicalInstrument 
+{
+	void tuneStrings() {
+		System.out.println("Tuning the guitar strings....");
+	}
+	void play() {
+		System.out.println("Playing guitar.....");
+	}
+	void pluck() {
+		System.out.println("Plucking the strings of the guitar....");
+	}
+	@Override
+	public void uses() {
+		// TODO Auto-generated method stub
+		
+	}
+}
+class Violin extends StringBasedMusicalInstrument 
+{
+	void tuneStrings() {
+		System.out.println("Tuning the Violin strings....");
+	}
+	void play() {
+		System.out.println("Playing Violin .....");
+	}
+	void bowing() {
+		System.out.println("Bowing the strings of the violin....");
+	}
+	@Override
+	public void uses() {
+		// TODO Auto-generated method stub
+		
+	}
+}
+class Flute extends AirBasedMusicalInstrument
+{
+
+	@Override
+	public void uses() {
+		// TODO Auto-generated method stub
+		System.out.println("Using flute for soothing music....");
+	}
+
+	
+
+	@Override
+	void play() {
+		// TODO Auto-generated method stub
+		System.out.println("Playing Flute .....");
+	}
+
+	@Override
+	void checkAir() {
+		// TODO Auto-generated method stub
+		System.out.println("Checking the air of the flute....");
+	}
+	
+}
+class Nagada extends DrumBasedMusicalInstrument
+{
+
+	@Override
+	public void uses() {
+		// TODO Auto-generated method stub
+		System.out.println("Using Nagada....");
+	}
+
+	@Override
+	void checkDrumPatter() {
+		// TODO Auto-generated method stub
+		System.out.println("Patting the Nagada to produce Harsh sound....");
+	}
+
+	@Override
+	void play() {
+		// TODO Auto-generated method stub
+		System.out.println("Playing Drum....");
+	}
+	
+}
+class ElectricGuitar extends Guitar
+{
+	
+}
