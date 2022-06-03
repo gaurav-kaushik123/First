@@ -1,5 +1,7 @@
 
 
+
+
 public class InstrumentTest {
 	public static void main(String[] args) {
 //		MusicalInstrument mi = new MusicalInstrument();
@@ -11,13 +13,16 @@ public class InstrumentTest {
 		
 	}
 }
-interface Instrument
+abstract class Instrument
 {
-	void uses();
+	abstract void uses();
 }
-abstract class MusicalInstrument implements Instrument
+abstract class MusicalInstrument extends Instrument
 {
 	abstract void play();
+}
+abstract class MedicalInstrument extends Instrument{
+	
 }
 abstract class StringBasedMusicalInstrument extends MusicalInstrument
 {
@@ -30,6 +35,13 @@ abstract class AirBasedMusicalInstrument extends MusicalInstrument
 abstract class DrumBasedMusicalInstrument extends MusicalInstrument
 {
 	abstract void checkDrumPatter();
+}
+abstract class SurgicalMedicalInstrument extends MedicalInstrument{
+	abstract void operate();
+}
+
+abstract class PathalogicalMedicalInstrument extends MedicalInstrument{
+	abstract void diagnose();
 }
 class Guitar extends StringBasedMusicalInstrument 
 {
@@ -113,5 +125,92 @@ class Nagada extends DrumBasedMusicalInstrument
 }
 class ElectricGuitar extends Guitar
 {
+	 
+}
+interface Plucking{
+	void pluck();
+}
+
+interface Strumming{
+	void strum();
+}
+interface Dissecting{
+	void dissect();
+}
+
+class Scalpel extends SurgicalMedicalInstrument implements Dissecting{
+
+	@Override
+	void operate() {
+		System.out.println("Scalpel is used to Operate...");
+		
+	}
+
+	@Override
+	void uses() {
+		System.out.println("Scalpel is being used as Medical Instrument");
+		
+	}
+
+	@Override
+	public void dissect() {
+		System.out.println("Dissecting with scalpel...");
+		
+	}
+
+	
 	
 }
+
+interface MeasureBloodSugar{
+	void measureSugar();
+}
+
+interface MeasureHeartRate{
+	void measureHeartRate();
+}
+class Glucometer extends PathalogicalMedicalInstrument implements MeasureBloodSugar{
+
+	@Override
+	void diagnose() {
+		System.out.println("Running Diagnostics with Glucometer...");
+		
+	}
+
+	@Override
+	void uses() {
+		System.out.println("Using Glucometer...");
+		
+	}
+	@Override
+	public void measureSugar() {
+		System.out.println("checking blood sugar...");
+		
+	}
+	
+
+	
+	
+}
+
+class ECGMachine extends PathalogicalMedicalInstrument implements MeasureHeartRate {
+	
+	@Override
+	public void measureHeartRate() {
+		System.out.println("Measuring heart rate....");
+		
+	}
+	
+	@Override
+	void diagnose() {
+		System.out.println("Running Diagnostics with ECG Machine");
+		
+	}
+
+	@Override
+	void uses() {
+		System.out.println("using ECG Machine");
+		
+	}
+}
+
