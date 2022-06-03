@@ -1,7 +1,5 @@
 
 
-
-
 public class InstrumentTest {
 	public static void main(String[] args) {
 //		MusicalInstrument mi = new MusicalInstrument();
@@ -10,6 +8,21 @@ public class InstrumentTest {
 		g.play();
 		g.tuneStrings();
 		g.pluck();
+		
+		System.out.println("---------------");
+		Glucometer glc = new Glucometer();
+		glc.assist();
+		glc.diagnose();
+		glc.measureSugar();
+		glc.toString();
+		
+		System.out.println("---------------");
+		Scalpel spl = new Scalpel();
+		spl.assist();
+		spl.dissect();
+		spl.operate();
+		spl.uses();
+		
 		
 	}
 }
@@ -22,6 +35,7 @@ abstract class MusicalInstrument extends Instrument
 	abstract void play();
 }
 abstract class MedicalInstrument extends Instrument{
+	abstract void assist();
 	
 }
 abstract class StringBasedMusicalInstrument extends MusicalInstrument
@@ -101,7 +115,11 @@ class Flute extends AirBasedMusicalInstrument
 	}
 	
 }
-class Nagada extends DrumBasedMusicalInstrument
+interface Patting
+{
+	
+}
+class Nagada extends DrumBasedMusicalInstrument implements Patting
 {
 
 	@Override
@@ -119,14 +137,11 @@ class Nagada extends DrumBasedMusicalInstrument
 	@Override
 	void play() {
 		// TODO Auto-generated method stub
-		System.out.println("Playing Drum....");
+		System.out.println("Playing Nagada....");
 	}
 	
 }
-class ElectricGuitar extends Guitar
-{
-	 
-}
+
 interface Plucking{
 	void pluck();
 }
@@ -148,7 +163,7 @@ class Scalpel extends SurgicalMedicalInstrument implements Dissecting{
 
 	@Override
 	void uses() {
-		System.out.println("Scalpel is being used as Medical Instrument");
+		System.out.println("Scalpel is being used as a Medical Instrument");
 		
 	}
 
@@ -156,6 +171,12 @@ class Scalpel extends SurgicalMedicalInstrument implements Dissecting{
 	public void dissect() {
 		System.out.println("Dissecting with scalpel...");
 		
+	}
+
+	@Override
+	void assist() {
+		// TODO Auto-generated method stub
+		System.out.println("using a medical instrument.."+getClass());
 	}
 
 	
@@ -187,6 +208,12 @@ class Glucometer extends PathalogicalMedicalInstrument implements MeasureBloodSu
 		System.out.println("checking blood sugar...");
 		
 	}
+
+	@Override
+	void assist() {
+		// TODO Auto-generated method stub
+		System.out.println("using a medical instrument.."+getClass());
+	}
 	
 
 	
@@ -203,7 +230,7 @@ class ECGMachine extends PathalogicalMedicalInstrument implements MeasureHeartRa
 	
 	@Override
 	void diagnose() {
-		System.out.println("Running Diagnostics with ECG Machine");
+		System.out.println("Diagnosing with ECG Machine");
 		
 	}
 
@@ -211,6 +238,12 @@ class ECGMachine extends PathalogicalMedicalInstrument implements MeasureHeartRa
 	void uses() {
 		System.out.println("using ECG Machine");
 		
+	}
+
+	@Override
+	void assist() {
+		// TODO Auto-generated method stub
+		System.out.println("using a medical instrument.."+getClass());
 	}
 }
 
